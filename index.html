@@ -108,6 +108,53 @@
         a:hover {
             text-decoration: underline;
         }
+
+        pre:has(code) {
+            position: relative;
+
+            /* add scrollbar if there is horizontal overflow */
+            overflow-y: auto;
+
+            padding-inline: 0.5rem;
+            padding-block-end: 0.75rem;
+            margin: 0.5rem 0;
+
+            border-radius: 0.75rem;
+        }
+
+        /* Sticky header of the code block, It is never out of view. */
+        pre:has(code) header {
+            position: sticky;
+            top: 0;
+            left: 0;
+            background-color: lightgrey;
+
+            width: 100%;
+
+            /* moves button to end of the header */
+            display: flex;
+            justify-content: end;
+
+            padding-block: 0.25rem;
+        }
+
+        /* The copy button. Style as you like! */
+        pre:has(code) button {
+            font-size: 0.9rem;
+            background-color: #828282;
+
+            margin-block: auto;
+
+            border: ridge 1px #7b7b7c;
+            border-radius: 5px;
+            text-shadow: #c4c4c4 0 0 2px;
+        }
+
+        /* Optional hover style for the copy button */
+        pre:has(code) button:hover {
+            background-color: #bcbabb;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             header h1 {
@@ -327,7 +374,7 @@
         <section id="resources" style="clear: both; margin-top: 20px;">
             <h2 style="margin-bottom: -10px; margin-top: 20px;">Resources</h2>
             <hr/>
-            <p>For updates and resources, visit the <a href="https://github.com/LLMUnlearningSemEval2025">GitHub repository</a>.</p>
+            <p>For updates and resources, visit the <a href="https://github.com/####">GitHub repository</a>.</p>
             <p>To communicate join our <a href="https://join.slack.com/t/blpworkshop/shared_invite/zt-1ryu9eyac-7fevK9A4_Bt~qN_eCK349g">Slack</a> Channel</p>
 
             <h5 style="margin-bottom: -10px">Data Uses</h5>
@@ -338,16 +385,51 @@
             <h5 style="margin-bottom: -10px">Citation</h5>
             <hr/>
             <div class="note" markdown="1">
-                ```
-                    @inproceddings{hasan2025multihate,
-                        title="",
-                    }
-                ```
+<!--                <pre class="bibliography" style="margin-left: -150px;"><code>-->
+<!--                    @inproceddings{hasan2025multihate,-->
+<!--                        title="",-->
+<!--                    }-->
+<!--                </code></pre>-->
+<pre tabindex="0" style="background-color: lightgrey;"><header><button>Copy Code</button></header><code> <span class="hljs-meta">@inprocedding</span>{hasan2025multihate,
+    title=<span class="hljs-string">""</span>,
+ }
+</code></pre>
             </div>
         </section>
     </div>
     <footer>
         <p> &copy; 2025 MultiHate Shared Task. All rights reserved.</p>
     </footer>
+
+<script type="text/javascript">
+    const copyButtonLabel = "Copy Code";
+
+    // only pre elements that have a code as a child
+    let blocks = document.querySelectorAll("pre:has(code)");
+
+    blocks.forEach((block) => {
+        let button = block.querySelector("button");
+
+        // handle click event
+        button.addEventListener("click", async () => {
+            await copyCode(block, button);
+        });
+    });
+
+    async function copyCode(block, button) {
+        let code = block.querySelector("code");
+        let text = code.innerText;
+
+        await navigator.clipboard.writeText(text);
+
+        // visual feedback that task is completed
+        button.innerText = "Code Copied";
+
+        setTimeout(() => {
+            button.innerText = copyButtonLabel;
+        }, 700);
+    }
+</script>
 </body>
+
 </html>
