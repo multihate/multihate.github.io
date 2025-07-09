@@ -42,7 +42,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multi-task Bangla Hate Speech Shared Task</title>
+    <title>Bangla Multi-task Hatespeech Identification Shared Task</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
         body {
@@ -55,7 +55,7 @@
         }
         header {
             background-color: #f8f9fa;
-            padding: 2rem 1rem;
+            padding: 1rem 1rem;
             text-align: center;
         }
         header h1 {
@@ -83,9 +83,9 @@
             text-decoration: underline;
         }
         .container {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 1.5rem;
+            padding: 1rem;
         }
         h2 {
             color: #007bff;
@@ -109,6 +109,10 @@
             text-decoration: underline;
         }
 
+        .snippet-clipboard-content{
+            background-color: lightgrey;
+        }
+
         pre:has(code) {
             position: relative;
 
@@ -120,6 +124,11 @@
             margin: 0.5rem 0;
 
             border-radius: 0.75rem;
+        }
+
+        th, td{
+            padding-right: 50px;
+            border: 1px solid gray;
         }
 
         /* Sticky header of the code block, It is never out of view. */
@@ -205,7 +214,7 @@
 </head>
 <body>
     <header>
-        <h1>Multi-task Bangla Hate Speech Shared Task @ <a href="https://blp-workshop.github.io/">BLP Workshop</a></h1>
+        <h1>Bangla Multi-task Hatespeech Identification Shared Task @ <a href="https://blp-workshop.github.io/">BLP Workshop</a></h1>
         <!--<p>Task 1: Large Language Model Unlearning</p> -->
     </header>
     <nav>
@@ -222,7 +231,7 @@
             <h2 style="margin-bottom: -10px;">Overview</h2>
             <hr/>
             <p>
-                The <strong>Multi-task Bangla Hate Speech Identification</strong> shared task is designed to address the complex and nuanced problem of detecting and understanding hate speech in Bangla across multiple related subtasks such as type of hate, severity, and target group. In contrast to single-task approaches, this shared task embraces a multi-task learning framework, where models are trained to jointly learn several hate speech detection objectives. This approach is more reflective of real-world scenarios, where identifying hate speech requires understanding not just its presence, but also its type, target, and severity.
+                The <strong>Bangla Multi-task Hatespeech Identification</strong> shared task is designed to address the complex and nuanced problem of detecting and understanding hate speech in Bangla across multiple related subtasks such as type of hate, severity, and target group. In contrast to single-task approaches, this shared task embraces a multi-task learning framework, where models are trained to jointly learn several hate speech detection objectives. This approach is more reflective of real-world scenarios, where identifying hate speech requires understanding not just its presence, but also its type, target, and severity.
             </p>
         </section>
         <section id="task">
@@ -245,41 +254,237 @@
                 <li><strong>Subtask 1C</strong>: Averaged Micro-F1 score</li>
             </ul>
         </section>
-        <section id="dataset">
-            <h2 style="margin-bottom: -10px;">Dataset</h2>
-            <hr/>
-            <p>
-                @Fahad, add the data details here...
-            </p>
-        </section>
-        <section id="timeline">
-            <h2 style="margin-bottom: -10px;">Timeline</h2>
-            <hr/>
-            <ul>
-                <li><strong>Jun 25, 2025</strong>: Training Data Release (Phase-1) & Registration Open</li>
-                <li><strong>Aug 15, 2025</strong>: Training Data Release (Phase-2)</li>
-                <li><strong>Sep 25, 2025</strong>: Test data Release and Beginning of the evaluation cycle</li>
-                <li><strong>Oct 01, 2025</strong>: End of evaluation cycle (System Submissions Due)</li>
-                <li><strong>Oct 03, 2025</strong>: Evaluation cycle result release</li>
-                <li><strong>Oct 15, 2025</strong>: Paper Submission Deadline (Shared Task System Papers Due)</li>
-                <li><strong>Nov 03, 2025</strong>: Notification of Acceptance</li>
-                <li><strong>Nov 11, 2025</strong>: Camera-Ready Papers Due</li>
-                <li><strong>Dec 23-24, 2025 </strong>: Workshop date, co-located with <a href="https://www.afnlp.org/conferences/ijcnlp2025/">IJCNLP-AACL 2025</a>.</li>
-            </ul>
-            <strong>All deadlines are 11:59PM UTC-12:00 (“anywhere on Earth”).</strong>
-        </section>
         <section id="participation">
             <h2 style="margin-bottom: -10px;">Participation</h2>
             <hr/>
             <p>
                 Please follow the steps to participate:
-                <ol>
-                    <li>Complete the following Google Form: <strong><a href="">Registration Form</a></strong></li>
-                    <li>To participate in this competition, you must have an account in <strong><a href="https://codalab.lisn.upsaclay.fr/">CodaLab Form</a></strong></li>
-                    <li>Register to the the following competition to participate: <strong><a href="https://codalab.lisn.upsaclay.fr/competitions/#####">https://codalab.lisn.upsaclay.fr/competitions/#####</a></strong></li>
-                </ol>
+            <ol>
+                <!--                    <li>Complete the following Google Form: <strong><a href="">Registration Form</a></strong></li>-->
+                <li>To participate in this competition, you must have an account in <strong><a href="https://codalab.lisn.upsaclay.fr/">CodaLab</a></strong></li>
+                <li>Register to the the following competition to participate: <strong><a href="https://codalab.lisn.upsaclay.fr/competitions/#####">https://codalab.lisn.upsaclay.fr/competitions/#####</a></strong></li>
+            </ol>
             </p>
         </section>
+        <section id="dataset">
+<!--            <div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto">Dataset</h2><a id="user-content-dataset" class="anchor" aria-label="Permalink: Dataset" href="#dataset"></a></div>-->
+<!--            <h2 style="margin-bottom: -10px;">Dataset</h2>-->
+<!--            <hr/>-->
+<!--            <p>-->
+<!--                @Fahad, add the data details here...-->
+<!--            </p>-->
+            <div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto">Dataset</h2><a id="user-content-dataset" class="anchor" aria-label="Permalink: Dataset" href="#dataset"></a></div>
+            <hr/>
+            <h5>Data Repository: <a href="https://github.com/AridHasan/blp25_task1" target="_blank">https://github.com/AridHasan/blp25_task1</a> </h5>
+            <hr/>
+            <p dir="auto">For a brief overview of the dataset, kindly refer to the <em>README.md</em> file located in the data directory.</p>
+            <div class="markdown-heading" dir="auto"><h3 tabindex="-1" class="heading-element" dir="auto">Input data format</h3><a id="user-content-input-data-format" class="anchor" aria-label="Permalink: Input data format" href="#input-data-format"></a></div>
+            <div class="markdown-heading" dir="auto"><h4 tabindex="-1" class="heading-element" dir="auto">Subtask 1A</h4><a id="user-content-subtask-1a" class="anchor" aria-label="Permalink: Subtask 1A" href="#subtask-1a"></a></div>
+            <p dir="auto">Each file uses the tsv format. A row within the tsv adheres to the following structure:</p>
+            <div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="id	text	label"><pre class="notranslate"><code>id	text	label
+</code></pre></div>
+            <p dir="auto">Where:</p>
+            <ul dir="auto">
+                <li>id: an index or id of the text</li>
+                <li>text: text</li>
+                <li>label: <em>Abusive</em>, <em>Sexism</em>, <em>Religious Hate</em>, <em>Political Hate</em>, <em>Profane</em>, or <em>None</em>.</li>
+            </ul>
+            <div class="markdown-heading" dir="auto"><h5 tabindex="-1" class="heading-element" dir="auto">Example</h5><a id="user-content-example" class="anchor" aria-label="Permalink: Example" href="#example"></a></div>
+            <div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="490273	আওয়ামী লীগের সন্ত্রাসী কবে দরবেন এই সাহস আপনাদের নাই	Political Hate"><pre class="notranslate"><code>490273	আওয়ামী লীগের সন্ত্রাসী কবে দরবেন এই সাহস আপনাদের নাই	Political Hate
+</code></pre></div>
+            <div class="markdown-heading" dir="auto"><h4 tabindex="-1" class="heading-element" dir="auto">Subtask 1B</h4><a id="user-content-subtask-1b" class="anchor" aria-label="Permalink: Subtask 1B" href="#subtask-1b"></a></div>
+            <p dir="auto">Each file uses the tsv format. A row within the tsv adheres to the following structure:</p>
+            <div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="id	text	label"><pre class="notranslate"><code>id	text	label
+</code></pre></div>
+            <p dir="auto">Where:</p>
+            <ul dir="auto">
+                <li>id: an index or id of the text</li>
+                <li>text: text</li>
+                <li>label: <em>Individuals</em>, <em>Organizations</em>, <em>Communities</em>, or <em>Society</em>.</li>
+            </ul>
+            <div class="markdown-heading" dir="auto"><h5 tabindex="-1" class="heading-element" dir="auto">Example</h5><a id="user-content-example-1" class="anchor" aria-label="Permalink: Example" href="#example-1"></a></div>
+            <div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="490273	আওয়ামী লীগের সন্ত্রাসী কবে দরবেন এই সাহস আপনাদের নাই	Organization"><pre class="notranslate"><code>490273	আওয়ামী লীগের সন্ত্রাসী কবে দরবেন এই সাহস আপনাদের নাই	Organization
+</code></pre></div>
+            <div class="markdown-heading" dir="auto"><h4 tabindex="-1" class="heading-element" dir="auto">Subtask 1C</h4><a id="user-content-subtask-1c" class="anchor" aria-label="Permalink: Subtask 1C" href="#subtask-1c"></a></div>
+            <p dir="auto">Each file uses the tsv format. A row within the tsv adheres to the following structure:</p>
+            <div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="id	text	hate_type   hate_severity   to_whom"><pre class="notranslate"><code>id	text	hate_type   hate_severity   to_whom
+</code></pre></div>
+            <p dir="auto">Where:</p>
+            <ul dir="auto">
+                <li>id: an index or id of the text</li>
+                <li>text: text</li>
+                <li>hate_type: <em>Abusive</em>, <em>Sexism</em>, <em>Religious Hate</em>, <em>Political Hate</em>, <em>Profane</em>, or <em>None</em>.</li>
+                <li>hate_severity: <em>Little to None</em>, <em>Mild</em>, or <em>Severe</em>.</li>
+                <li>to_whom: <em>Individuals</em>, <em>Organizations</em>, <em>Communities</em>, or <em>Society</em>.</li>
+            </ul>
+            <div class="markdown-heading" dir="auto"><h5 tabindex="-1" class="heading-element" dir="auto">Example</h5><a id="user-content-example-2" class="anchor" aria-label="Permalink: Example" href="#example-2"></a></div>
+            <div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="490273	আওয়ামী লীগের সন্ত্রাসী কবে দরবেন এই সাহস আপনাদের নাই	&quot;Political Hate&quot;  &quot;Little to None&quot;  Organization"><pre class="notranslate"><code>490273	আওয়ামী লীগের সন্ত্রাসী কবে দরবেন এই সাহস আপনাদের নাই	"Political Hate"  "Little to None"  Organization
+</code></pre></div>
+        </section>
+        <section id="timeline">
+            <h2 style="margin-bottom: -10px;">Timeline</h2>
+            <hr/>
+            <ul dir="auto">
+                <li><strong>10 July 2025:</strong> Registration on codalab and beginning of the development cycle</li>
+                <li><strong>25 September 2025:</strong> Beginning of the evaluation cycle (test sets release and run submission)</li>
+                <li><strong>01 October 2025:</strong> End of the evaluation cycle</li>
+                <li><strong>03 October 2025:</strong> Publish rank list and share paper submission details</li>
+                <li><strong>15 October 2025:</strong> Paper Submission Deadline (Shared Task System Papers Due)</li>
+                <li><strong>03 November 2025:</strong> Notification of acceptance</li>
+                <li><strong>11 November 2025:</strong> Camera-ready due</li>
+                <li><strong>23-14 December 2025:</strong> Workshop co-located with IJCNLP-AACL 2025 (Mumbai, India)</li>
+            </ul>
+            <strong>All deadlines are 11:59PM UTC-12:00 (“anywhere on Earth”).</strong>
+        </section>
+        <div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto">Scorer and Official Evaluation Metrics</h2><a id="user-content-scorer-and-official-evaluation-metrics" class="anchor" aria-label="Permalink: Scorer and Official Evaluation Metrics" href="#scorer-and-official-evaluation-metrics"></a></div>
+        <hr/>
+        <div class="markdown-heading" dir="auto"><h3 tabindex="-1" class="heading-element" dir="auto">Scorers</h3><a id="user-content-scorers" class="anchor" aria-label="Permalink: Scorers" href="#scorers"></a></div>
+        <p dir="auto">The scorer for the task is located in the <a href="/AridHasan/blp25_task1/blob/main/scorer">scorer</a> module of the project. The scorer will report official evaluation metrics and other metrics of a prediction file. The scorer invokes the format checker for the task to verify the output is properly shaped. It also handles checking if the provided predictions file contains all tweets from the gold one.</p>
+        <p dir="auto">You can install all prerequisites through,</p>
+        <div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="pip install -r requirements.txt"><pre class="notranslate"><code>pip install -r requirements.txt
+</code></pre></div>
+        <p dir="auto">Launch the scorer for the task as follows:</p>
+        <div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="python scorer/task.py --gold-file-path=&lt;path_gold_file&gt; --pred-file-path=&lt;predictions_file&gt;"><pre class="notranslate"><code>python scorer/task.py --gold-file-path=&lt;path_gold_file&gt; --pred-file-path=&lt;predictions_file&gt;
+</code></pre></div>
+        <div class="markdown-heading" dir="auto"><h5 tabindex="-1" class="heading-element" dir="auto">Example</h5><a id="user-content-example-3" class="anchor" aria-label="Permalink: Example" href="#example-3"></a></div>
+        <div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="python scorer/task.py --pred_files_path task_dev_output.txt --gold_file_path data/dev.tsv"><pre class="notranslate"><code>python scorer/task.py --pred_files_path task_dev_output.txt --gold_file_path data/dev.tsv
+</code></pre></div>
+        <hr/>
+        <div class="markdown-heading" dir="auto"><h3 tabindex="-1" class="heading-element" dir="auto">Baselines</h3><a id="user-content-baselines" class="anchor" aria-label="Permalink: Baselines" href="#baselines"></a></div>
+        <p dir="auto">The <a href="https://github.com/AridHasan/blp25_task1/blob/main/baselines">baselines</a> module currently contains a majority, random and a simple n-gram baseline.</p>
+        <div class="markdown-heading" dir="auto"><h4 tabindex="-1" class="heading-element" dir="auto">Subtask 1A</h4><a id="user-content-subtask-1a-1" class="anchor" aria-label="Permalink: Subtask 1A" href="#subtask-1a-1"></a></div>
+        <p dir="auto">Baseline Results for the task on Dev-Test set</p>
+        <markdown-accessiblity-table><table>
+            <thead>
+            <tr>
+                <th>Model</th>
+                <th>micro-F1</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Random Baseline</td>
+                <td>0.1465</td>
+            </tr>
+            <tr>
+                <td>Majority Baseline</td>
+                <td>0.5760</td>
+            </tr>
+            <tr>
+                <td>n-gram Baseline</td>
+                <td>0.6075</td>
+            </tr>
+            </tbody>
+        </table></markdown-accessiblity-table>
+        <hr/>
+        <div class="markdown-heading" dir="auto"><h4 tabindex="0" class="heading-element" dir="auto">Subtask 1B</h4><a id="user-content-subtask-1b-1" class="anchor" aria-label="Permalink: Subtask 1B" href="#subtask-1b-1"></a></div>
+        <hr/>
+        <p dir="auto">Baseline Results for the task on Dev-Test set</p>
+        <markdown-accessiblity-table><table>
+            <thead>
+            <tr>
+                <th>Model</th>
+                <th>micro-F1</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Random Baseline</td>
+                <td>0.2118</td>
+            </tr>
+            <tr>
+                <td>Majority Baseline</td>
+                <td>0.6083</td>
+            </tr>
+            <tr>
+                <td>n-gram Baseline</td>
+                <td>0.6279</td>
+            </tr>
+            </tbody>
+        </table></markdown-accessiblity-table>
+        <hr/>
+        <div class="markdown-heading" dir="auto"><h4 tabindex="0" class="heading-element" dir="auto">Subtask 1C</h4><a id="user-content-subtask-1c-1" class="anchor" aria-label="Permalink: Subtask 1C" href="#subtask-1c-1"></a></div>
+        <hr/>
+        <p dir="auto">Baseline Results for the task on Dev-Test set</p>
+        <markdown-accessiblity-table><table>
+            <thead>
+            <tr>
+                <th>Model</th>
+                <th>weighted micro-F1</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Random Baseline</td>
+                <td>0.2300</td>
+            </tr>
+            <tr>
+                <td>Majority Baseline</td>
+                <td>0.6222</td>
+            </tr>
+            <tr>
+                <td>n-gram Baseline</td>
+                <td>0.6401</td>
+            </tr>
+            </tbody>
+        </table></markdown-accessiblity-table>
+        <hr/>
+        <div class="markdown-heading" dir="auto"><h2 tabindex="0" class="heading-element" dir="auto">Format checker</h2><a id="user-content-format-checker" class="anchor" aria-label="Permalink: Format checker" href="#format-checker"></a></div>
+        <hr/>
+        <p dir="auto">The format checkers for the task are located in the <a href="/AridHasan/blp25_task1/blob/main/format_checker">format_checker</a> module of the project. The format checker verifies that your generated results file complies with the expected format.</p>
+        <p dir="auto">Before running the format checker please install all prerequisites,</p>
+        <div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="pip install -r requirements.txt"><pre class="notranslate"><code>pip install -r requirements.txt
+</code></pre></div>
+        <p dir="auto">To launch it, please run the following command:</p>
+        <div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="python format_checker/task.py -p results_files"><pre class="notranslate"><code>python format_checker/task.py -p results_files
+</code></pre></div>
+        <div class="markdown-heading" dir="auto"><h5 tabindex="-1" class="heading-element" dir="auto">Example</h5><a id="user-content-example-4" class="anchor" aria-label="Permalink: Example" href="#example-4"></a></div>
+        <div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="python format_checker/task.py -p ./subtask_1A.tsv"><pre class="notranslate"><code>python format_checker/task.py -p ./subtask_1A.tsv
+</code></pre></div>
+        <p dir="auto"><strong>results_files</strong>: can be one path or space-separated list of paths</p>
+
+        <div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto">Submission</h2><a id="user-content-submission" class="anchor" aria-label="Permalink: Submission" href="#submission"></a></div>
+        <hr/>
+        <div class="markdown-heading" dir="auto"><h3 tabindex="-1" class="heading-element" dir="auto">Guidelines</h3><a id="user-content-guidelines" class="anchor" aria-label="Permalink: Guidelines" href="#guidelines"></a></div>
+        <p dir="auto">Evaluation consists of two phases:</p>
+        <ol dir="auto">
+            <li><strong>Development phase:</strong> This phase involves working on the <em>dev-test set</em>.</li>
+            <li><strong>Evaluation phase:</strong> This phase involves working on the <em>test set</em>, which will be released during the <em><strong>evaluation cycle</strong></em>.</li>
+        </ol>
+        <p dir="auto">For each phase, please adhere to the following guidelines:</p>
+        <ul dir="auto">
+            <li>We request each team to establish and manage a single account for all submissions. Hence, all runs should be submitted through the same account. Any submissions made from multiple accounts by the same team may lead to your system being not ranked from the final ranking in the overview paper.</li>
+            <li>The most recently uploaded file on the leaderboard will serve as your final submission.</li>
+            <li>Adhere strictly to the naming convention for the output file, which must be labeled as 'task.tsv'. Deviation from this standard could trigger an error on the leaderboard.</li>
+            <li>Submission protocol requires you to compress the '.tsv' file into a '.zip' file (for instance, zip task.zip task.tsv) and submit it through the Codalab page.</li>
+            <li>With each submission, ensure to include your team name along with a brief explanation of your methodology.</li>
+            <li>Each team is allowed a maximum of 100 submissions per day for the given task. Please adhere to this limit.</li>
+        </ul>
+        <hr/>
+        <div class="markdown-heading" dir="auto"><h3 tabindex="-1" class="heading-element" dir="auto">Submission Format</h3><a id="user-content-submission-format" class="anchor" aria-label="Permalink: Submission Format" href="#submission-format"></a></div>
+        <div class="markdown-heading" dir="auto"><h4 tabindex="-1" class="heading-element" dir="auto">Subtask 1A and 1B</h4><a id="user-content-subtask-1a-and-1b" class="anchor" aria-label="Permalink: Subtask 1A and 1B" href="#subtask-1a-and-1b"></a></div>
+        <p dir="auto">Submission file format is tsv (tab seperated values). A row within the tsv adheres to the following structure:</p>
+        <div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="id	label   model"><pre class="notranslate"><code>id	label   model
+</code></pre></div>
+        <p dir="auto">Where:</p>
+        <ul dir="auto">
+            <li>id: a id of the text</li>
+            <li>label: <strong>[<em>Abusive</em>, <em>Sexism</em>, <em>Religious Hate</em>, <em>Political Hate</em>, <em>Profane</em>, or <em>None</em>]</strong> or <strong>[<em>Individuals</em>, <em>Organizations</em>, <em>Communities</em>, or <em>Society</em>.]</strong></li>
+            <li>model: model name</li>
+        </ul>
+        <div class="markdown-heading" dir="auto"><h4 tabindex="-1" class="heading-element" dir="auto">Subtask 1C</h4><a id="user-content-subtask-1c-2" class="anchor" aria-label="Permalink: Subtask 1C" href="#subtask-1c-2"></a></div>
+        <p dir="auto">Submission file format is tsv (tab seperated values). A row within the tsv adheres to the following structure:</p>
+        <div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="id	hate_type   hate_severity   to_whom   model"><pre class="notranslate"><code>id	hate_type   hate_severity   to_whom   model
+</code></pre></div>
+        <p dir="auto">Where:</p>
+        <ul dir="auto">
+            <li>id: a id of the text</li>
+            <li>hate_type: <em>Abusive</em>, <em>Sexism</em>, <em>Religious Hate</em>, <em>Political Hate</em>, <em>Profane</em>, or <em>None</em>.</li>
+            <li>hate_severity: <em>Little to None</em>, <em>Mild</em>, or <em>Severe</em>.</li>
+            <li>to_whom: <em>Individuals</em>, <em>Organizations</em>, <em>Communities</em>, or <em>Society</em>.</li>
+            <li>model: model name</li>
+        </ul>
+
         <section id="organizers">
 
             <h2 style="margin-bottom: -10px;">Organizers</h2>
@@ -390,15 +595,15 @@
 <!--                        title="",-->
 <!--                    }-->
 <!--                </code></pre>-->
-<pre tabindex="0" style="background-color: lightgrey;"><header><button>Copy Code</button></header><code> <span class="hljs-meta">@inprocedding</span>{hasan2025multihate,
-    title=<span class="hljs-string">""</span>,
+<pre tabindex="0" style="background-color: lightgrey;"><header><button>Copy</button></header><code> <span class="hljs-meta">@inprocedding</span>{hasan2025multihate,
+    title=<span class="hljs-string">"BanglaMultiHate"</span>,
  }
 </code></pre>
             </div>
         </section>
     </div>
     <footer>
-        <p> &copy; 2025 MultiHate Shared Task. All rights reserved.</p>
+        <p> &copy; 2025 BanglaMultiHate Shared Task. All rights reserved.</p>
     </footer>
 
 <script type="text/javascript">
